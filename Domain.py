@@ -3,7 +3,7 @@ import re
 from Headers import Headers
 from typing import Union
 from requests import Response
-
+import exrex
 
 class Domain:
 
@@ -62,8 +62,8 @@ class Domain:
 
     def check_phone_number(self, pattern) -> str:
         req = requests.get(self.address)
-        match = re.match(pattern, req.text)
-        if match is not None:
+        ans = re.search(pattern, req.text)
+        if ans.group(0) is not None:
             return "Номер телефона соответствует стандарту"
         else:
             return "Номер телефона не соответствует стандарту"
