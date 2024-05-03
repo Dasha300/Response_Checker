@@ -63,7 +63,7 @@ class Domain:
     def check_phone_number(self, pattern) -> str:
         req = requests.get(self.address)
         ans = re.search(pattern, req.text)
-        if ans.group(0) is not None:
+        if ans.group(0) is None:
             return "Номер телефона соответствует стандарту"
         else:
-            return "Номер телефона не соответствует стандарту"
+            return "Номер телефона в соответствии со стандартом " + ans.group().replace(' ', '')
