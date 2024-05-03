@@ -17,5 +17,5 @@ For update current brunch you can use following command
 
 ```
 git fetch
-git rebase master 
+git rebase master/master 
 ```
